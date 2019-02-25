@@ -33,9 +33,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                cbChoco.setEnabled(false);
-                cbCream.setEnabled(false);
+                cbChoco.setChecked(false);
+                cbCream.setChecked(false);
                 quantity.setText("0");
+                cofffee=10;
 
             }
         });
@@ -44,14 +45,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int i=Integer.parseInt(quantity.getText().toString());
-                cofffee=cofffee*i;
+
 
                 if (cbCream.isChecked()&&cbChoco.isChecked()){
-                    cofffee=cofffee*i*10;
-                }
-
-                if (cbCream.isChecked()||cbChoco.isChecked()){
-                    cofffee=cofffee*i*5;
+                    cofffee=(cofffee+10)*i;
+                }else if (cbCream.isChecked()||cbChoco.isChecked()){
+                    cofffee=(cofffee+5)*i;
+                }else {
+                    cofffee=cofffee*i;
                 }
 
                 Toast.makeText(MainActivity.this, "You ordered "+quantity.getText().toString()+" Coffee!" +
